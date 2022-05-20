@@ -1,6 +1,7 @@
 <template>
+<div class="app">
   <v-app id="inspire">
-<v-navigation-drawer
+    <v-navigation-drawer
    v-model="drawer"
    app
    >
@@ -64,10 +65,11 @@
       >
 
         <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
+          <v-icon>mdi-magnify</v-icon>
       </v-btn>
 
       <v-btn icon
+      :outline="active"
      @click="active = !active"
       >
         <v-icon>mdi-heart</v-icon>
@@ -84,6 +86,7 @@
       <router-view></router-view>
     </v-main>
   </v-app>
+    </div>
 </template>
 
 <script>
@@ -91,13 +94,26 @@
     data: () => ({
       drawer: null,
       items: [
-          { title: 'Todo', icon: 'mdi-format-list-checks', to:'/' },
+        { title: 'Todo', icon: 'mdi-format-list-checks', to:'/' },
           { title: 'About', icon: 'mdi-help-box', to:'/about' },
         ],
-        return: {
-          value: 1,
-          active: true,
-        }
-      })
+      }),
   }
 </script>
+
+<style>
+ .v-main__wrap {
+    flex: 1 1 auto;
+    max-width: 100%;
+    position: relative;
+    background-color: lightgray;
+}
+
+.v-sheet.v-list:not(.v-sheet--outlined) {
+  background-color: lightgray;
+}
+
+.v-list-item.v-list-item--link.theme--light {
+    background-color: white;
+}
+</style>
